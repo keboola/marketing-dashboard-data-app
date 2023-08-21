@@ -20,7 +20,7 @@ from my_package.html import html_code, html_footer, title, logo_html
 st.set_page_config(layout="wide")
 
 # Load data from CSV file
-file_path = os.path.abspath("./online_marketing.csv")
+file_path = os.path.abspath("./data/in/tables/online_marketing.csv")
 df_data = pd.read_csv(file_path)
 # Create date-related columns
 df_data["Date"] = pd.to_datetime(df_data["date"]).dt.date
