@@ -31,7 +31,7 @@ df_data.rename(columns={'clicks': 'Clicks'}, inplace=True)
 # Set up Streamlit container with title and logo
 with st.container():
     st.markdown(f"{logo_html}", unsafe_allow_html=True)
-    st.title("Online Marketing Analysis")
+    st.title("Online Marketing Dashboard")
 
 
 # Create a Streamlit container to hold filter controls and layout
