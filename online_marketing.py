@@ -120,7 +120,7 @@ def format_data(data):
     return formatted_data
 
 def format_float(value):
-    if value.is_integer():
+    if isinstance(value, int) or value.is_integer():
         return '{:,.0f}'.format(value).replace(',', ' ')
     else:
         formatted_value = '{:,.1f}'.format(value).replace(',', ' ')
