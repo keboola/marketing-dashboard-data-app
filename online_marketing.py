@@ -17,7 +17,7 @@ from my_package.html import html_code, html_footer, title, logo_html
 
 
 # Configure Streamlit layout
-#st.set_page_config(layout="wide")
+st.set_page_config(layout="wide")
 
 # Load data from CSV file
 file_path = "/data/in/tables/online_marketing.csv"
