@@ -20,8 +20,9 @@ from my_package.html import html_code, html_footer, title, logo_html
 st.set_page_config(layout="wide")
 
 # Load data from CSV file
-file_path = "/data/in/tables/online_marketing.csv"
+file_path = "./online_marketing.csv"
 df_data = pd.read_csv(file_path)
+print(df_data)
 # Create date-related columns
 df_data["Date"] = pd.to_datetime(df_data["date"]).dt.date
 df_data["datetime_format"] = pd.to_datetime(df_data["date"])
@@ -134,10 +135,10 @@ def format_series(series):
 metrics = [
     ("Impressions:", total_impressions),
     ("Clicks:", total_clicks),
-    ("Click-Through Rate:", (total_clicks/total_impressions)*100),
+    ("Click-Through Rate:", (total_clicks / total_impressions * 100) if total_impressions != 0 else 0),
     ("Cost per Clicks:", total_cpc),
     ("Cost per Conversions:",total_cpa ),
-    ("Average Cost per Click:", total_cpc/total_clicks),
+    ("Average Cost per Click:", (total_cpc / total_clicks) if total_clicks != 0 else 0),
 ]
 
 my_dict = {
@@ -171,16 +172,16 @@ for i, metric in enumerate(metrics):
 
     with col:
         # icon_image = os.path.abspath(f"/home/appuser/app/static/{icon_path}")
-        icon_image = os.path.abspath(f"./app/static/{icon_path}")
+        icon_image = os.path.abspath(f"./static/{icon_path}")
         st.markdown(f'''
         <div style="margin: 10px auto; width: 70%">
-            <div class="div-container" style="display:flex; margin:10px">
+            <div class="div-container" id="add_margin_bottom" style="display:flex;">
                 <div class="div-icon" style="flex-basis:2">
                     <img class="icon-img"  src="data:image/png;base64,{base64.b64encode(open(icon_image, "rb").read()).decode()}">
                 </div>
-                <div style="flex-shrink:1; margin-left: 8%">
-                    <h2 class="header">{metric_label}</h2>
-                    <p class="text">{formated_number}</p>
+                <div style="max-width: 150px;flex-shrink:1; margin-left: 8%; word-wrap: break-word;">
+                    <h2 class="centered-text-h2">{metric_label}</h2>
+                    <p class="centered-text-p">{formated_number}</p>
                 </div>
             </div>
         </div>
@@ -425,4 +426,3 @@ hide_streamlit_style = """
         </style>
         """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
-
