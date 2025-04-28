@@ -214,7 +214,7 @@ with tab1:
     yaxis_title='Impressions',
     )
     # Display the bar chart
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, use_container_width=True, key="fig_sources_impressions")
 
     # Display title for the "Campaigns" section
     st.markdown(title["campaigns"], unsafe_allow_html=True)
@@ -228,7 +228,7 @@ with tab1:
  
 
     # Display the bar chart
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, use_container_width=True,key="fig_sources_clicks")
 
     st.markdown(title["clicktr"], unsafe_allow_html=True)
     fig = px.line(sources_df, x="Date", y="ctr", color="source")
@@ -241,7 +241,7 @@ with tab1:
     fig.update_yaxes(range = [0,max_source+5])
 
     # Display the line chart
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, use_container_width=True,key="fig_sources_ctr")
 
     # Display title for the "top 10 campaigns" section
     st.markdown(title["sourcesPerClick"], unsafe_allow_html=True)
@@ -274,7 +274,7 @@ with tab1:
         )
 
         # Display the plot
-        st.plotly_chart(fig1, theme="streamlit", use_container_width=True)
+        st.plotly_chart(fig1, theme="streamlit", use_container_width=True,key="fig_top10_sources_clicks")
 
 
     # Create a plot to display top 10 campaigns by impressions
@@ -305,7 +305,7 @@ with tab1:
         )
 
         # Display the plot
-        st.plotly_chart(fig2, theme="streamlit", use_container_width=True)
+        st.plotly_chart(fig2, theme="streamlit", use_container_width=True, key="fig_top10_sources_impressions")
 
 with tab2:
     st.markdown(title["impressions"], unsafe_allow_html=True)
@@ -315,7 +315,7 @@ with tab2:
     yaxis_title='Impressions',
     )
        # Display the bar chart
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, use_container_width=True, key="fig_campaigns_impressions")
 
      # Display title for the "Campaigns" section
     st.markdown(title["campaigns"], unsafe_allow_html=True)
@@ -329,7 +329,7 @@ with tab2:
  
 
     # Display the bar chart
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, use_container_width=True, key="fig_campaigns_clicks")
 
     st.markdown(title["clicktr"], unsafe_allow_html=True)
     fig = px.line(campaings_df, x="Date", y="ctr", color="campaign")
@@ -342,7 +342,7 @@ with tab2:
     fig.update_yaxes(range = [0,max_campaign+5])
 
     # Display the line chart
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, use_container_width=True, key="fig_campaigns_ctr")
 
     # Display title for the "top 10 campaigns" section
     st.markdown(title["campaignsPerClick"], unsafe_allow_html=True)
@@ -375,7 +375,7 @@ with tab2:
         )
 
         # Display the plot
-        st.plotly_chart(fig1, theme="streamlit", use_container_width=True)
+        st.plotly_chart(fig1, theme="streamlit", use_container_width=True, key="fig_top10_campaigns_clicks")
 
 
     # Create a plot to display top 10 campaigns by impressions
@@ -406,7 +406,7 @@ with tab2:
         )
 
         # Display the plot
-        st.plotly_chart(fig2, theme="streamlit", use_container_width=True)
+        st.plotly_chart(fig2, theme="streamlit", use_container_width=True, key="fig_top10_campaigns_impressions")
 
 with tab3:
     # Display raw data section
