@@ -19,6 +19,9 @@ from my_package.html import html_code, html_footer, title, logo_html
 # Configure Streamlit layout
 st.set_page_config(layout="wide")
 
+# Define static folder path
+STATIC_FOLDER = os.path.join(os.path.dirname(__file__), 'static')
+
 # Load data from CSV file
 file_path = "/data/in/tables/online_marketing.csv"
 df_data = pd.read_csv(file_path)
@@ -172,7 +175,8 @@ for i, metric in enumerate(metrics):
 
     with col:
         # icon_image = os.path.abspath(f"/home/appuser/app/static/{icon_path}")
-        icon_image = os.path.abspath(f"./static/{icon_path}")
+        icon_image = os.path.join(STATIC_FOLDER, icon_path)
+        #icon_image = os.path.abspath(f"./static/{icon_path}")
         st.markdown(f'''
         <div style="margin: 10px auto; width: 70%">
             <div class="div-container" id="add_margin_bottom" style="display:flex;">
